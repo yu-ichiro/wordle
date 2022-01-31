@@ -1,5 +1,6 @@
 use std::env;
 use std::error::Error;
+use wordle::word::Word;
 
 type CommandResult<E = Box<dyn Error>> = Result<(), E>;
 
@@ -10,6 +11,10 @@ fn help() -> CommandResult {
 
 fn play(_args: Vec<String>) -> CommandResult {
     println!("play wordle!");
+    let vec: Vec<Word> = ["test", "box"].into_iter().map(Word::new).collect();
+    for word in vec {
+        println!("{}", word);
+    }
     Ok(())
 }
 
