@@ -1,24 +1,24 @@
 use std::env;
 use std::error::Error;
 
-type CommandResult<E = Box<dyn Error>> = Result<i32, E>;
+type CommandResult<E = Box<dyn Error>> = Result<(), E>;
 
 fn help() -> CommandResult {
     println!("help");
-    Ok(0)
+    Ok(())
 }
 
 fn play(_args: Vec<String>) -> CommandResult {
     println!("play wordle!");
-    Ok(0)
+    Ok(())
 }
 
 fn solve(_args: Vec<String>) -> CommandResult {
     println!("solve wordle!");
-    Ok(0)
+    Ok(())
 }
 
-fn main() -> Result<(), Box<dyn Error>> {
+fn main() -> CommandResult {
     let mut args = env::args().skip(1).map(|s| s.trim().to_string());
     match args.next().as_deref() {
         Some("play") => play(args.map(String::from).collect()),
