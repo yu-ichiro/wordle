@@ -19,7 +19,7 @@ fn solve(_args: Vec<String>) -> CommandResult {
 }
 
 fn main() -> CommandResult {
-    let mut args = env::args().skip(1).map(|s| s.trim().to_string());
+    let mut args = env::args().skip(1);
     match args.next().as_deref() {
         Some("play") => play(args.map(String::from).collect()),
         Some("solve") => solve(args.map(String::from).collect()),
